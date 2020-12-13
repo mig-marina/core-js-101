@@ -126,8 +126,12 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const a = rect1.top + rect1.height < rect2.top;
+  const b = rect1.top > rect2.top + rect2.height;
+  const c = rect1.left + rect1.width < rect2.left;
+  const d = rect1.left > rect2.left + rect2.width;
+  return !(a || b || c || d);
 }
 
 
@@ -174,8 +178,9 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const arr = str.split('');
+  return arr.filter((item) => arr.indexOf(item) === arr.lastIndexOf(item))[0] || null;
 }
 
 
@@ -335,8 +340,8 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 

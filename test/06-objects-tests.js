@@ -93,6 +93,7 @@ describe('06-objects-tasks', () => {
         expected: new MockType(10, 20, 30),
       },
     ].forEach((data) => {
+	console.log(data.proto);
       const actual = tasks.fromJSON(data.proto, data.json);
       assert.deepEqual(
         actual,

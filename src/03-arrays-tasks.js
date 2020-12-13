@@ -201,8 +201,10 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  const b = arr.map((item) => `${item.join(',')}\n`);
+  const str = b.join('');
+  return str.substring(0, str.length - 1);
 }
 
 /**
@@ -457,8 +459,11 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  const count = end - start + 1;
+  const arr = [];
+  arr.length = count;
+  return arr.fill('').map((item, i) => i + start);
 }
 
 /**
@@ -564,8 +569,20 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const l = arr.length;
+  let a = [];
+  if (l < 2) {
+    a = arr;
+  } else if (l % 2 === 0) {
+    a = arr.slice(l / 2).concat(arr.slice(0, l / 2));
+  } else {
+    const x = arr.slice(Math.floor(l / 2) + 1);
+    const y = arr.slice(Math.floor(l / 2), Math.floor(l / 2) + 1);
+    const z = arr.slice(0, Math.floor(l / 2));
+    a = x.concat(y, z);
+  }
+  return a;
 }
 
 
